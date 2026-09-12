@@ -105,8 +105,8 @@ const imageSets = {
             heading: "MANUFACTURING",
             type: "card",
             photos: [
-    ["images/jatayu-manufacturing-1.jpeg","Manufacturing - 1"],
-    ["images/jatayu-manufacturing-2.jpeg","Manufacturing - 2"],
+    ["images/jatayu-manufacturing-1.jpeg","Fixture fabrication"],
+    ["images/jatayu-manufacturing-2.jpg","Chassis fabrication"],
     ["images/jatayu-manufacturing-3.jpeg","Manufacturing - 3"],
     ["images/jatayu-manufacturing-4.jpeg","Manufacturing - 4"],
     ["images/jatayu-manufacturing-5.jpeg","Manufacturing - 5"],
@@ -116,17 +116,41 @@ const imageSets = {
           }
         ]
       },
-      {
-        title: "TEAM & COMPETITION",
-        blurb: "From a first-year student to Team Manager — the people, builds and competitions along the way, year by year.",
-        years: [
-          { label:"2023", photos: [ ["images/jatayu-2023-1.jpg","2023"] ] },
-          { label:"2024", photos: [ ["images/jatayu-2024-1.jpg","2024"] ] },
-          { label:"2025", photos: [ ["images/jatayu-2025-1.jpg","2025"] ] },
-          { label:"2026 — Baja Student Korea", photos: [ ["images/jatayu-2026-1.jpg","2026"] ] }
-        ]
-      }
+     {
+    title: "TEAM & COMPETITION",
+
+    bajaIntro: "BAJA SAE is an engineering competition where student teams design, analyse, manufacture and race an off-road vehicle built to handle demanding terrain, endurance and dynamic events.",
+
+    teamIntro: "Team Jatayu is the official SAE collegiate team of Maharaja Agrasen Institute of Technology. I joined in my first semester and gradually moved from subsystem-level work into design, manufacturing, sponsorship and team management.",
+
+    years: [
+        {
+            label: "2023",
+            photos: [
+                ["images/jatayu-2023-1.jpg", "First semester", "Joined Team Jatayu and began learning the vehicle, workshop and engineering workflow."]
+            ]
+        },
+        {
+            label: "2024",
+            photos: [
+                ["images/jatayu-2024-1.jpg", "Brake system", "Took official responsibility within the braking subsystem."]
+            ]
+        },
+        {
+            label: "2025",
+            photos: [
+                ["images/jatayu-2025-1.jpg", "Design & Manufacturing", "Expanded into design and manufacturing responsibilities across the vehicle."]
+            ]
+        },
+        {
+            label: "2026 — Baja Student Korea",
+            photos: [
+                ["images/jatayu-2026-1.jpg", "Team Manager", "Took on team-level responsibility and represented India at Baja Student Korea."]
+            ]
+                }
     ]
+  }
+]
   },
   cad: [
     ["images/cad-engine.jpg","ENGINE / SOLIDWORKS","Add the engine model later"],
@@ -187,6 +211,7 @@ function bindCategoryBoxes(key){
 const categoryModal = document.getElementById("categoryModal");
 
 function categoryContentHTML(cat){
+
   if(cat.sections){
     return cat.sections.map(sec => `
       <div class="${sec.type === 'card' ? 'work-card' : 'work-section'}">
@@ -196,14 +221,34 @@ function categoryContentHTML(cat){
       </div>
     `).join("");
   }
+
   if(cat.years){
-    return cat.years.map(y => `
-      <div class="modal-year-block">
-        <span class="modal-year-label">${y.label}</span>
-        <div class="modal-gallery">${y.photos.map(photoHTML).join("")}</div>
+    return `
+      <div class="team-intro">
+
+        <div class="team-intro-block">
+          <h6 class="work-section-heading">WHAT IS BAJA SAE?</h6>
+          <p class="work-section-text">${cat.bajaIntro}</p>
+        </div>
+
+        <div class="team-intro-block">
+          <h6 class="work-section-heading">TEAM JATAYU</h6>
+          <p class="work-section-text">${cat.teamIntro}</p>
+        </div> 
+
       </div>
-    `).join("");
+
+      <div class="team-years">
+        ${cat.years.map(y => `
+          <div class="modal-year-block">
+            <span class="modal-year-label">${y.label}</span>
+            <div class="modal-gallery">${y.photos.map(photoHTML).join("")}</div>
+          </div>
+        `).join("")}
+      </div>
+    `;
   }
+
   return `<div class="modal-gallery">${cat.photos.map(photoHTML).join("")}</div>`;
 }
 
