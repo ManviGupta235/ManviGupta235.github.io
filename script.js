@@ -107,8 +107,8 @@ const imageSets = {
             photos: [
     ["images/jatayu-manufacturing-1.jpeg","Fixture fabrication"],
     ["images/jatayu-manufacturing-2.jpg","Chassis fabrication"],
-    ["images/jatayu-manufacturing-3.jpeg","Manufacturing - 3"],
-    ["images/jatayu-manufacturing-4.jpeg","Manufacturing - 4"],
+    ["images/jatayu-manufacturing-3.jpg","Gear Cutting"],
+    ["images/jatayu-manufacturing-4.jpg","Upright Fabrication - CNC"],
     ["images/jatayu-manufacturing-5.jpeg","Manufacturing - 5"],
     ["images/jatayu-manufacturing-6.jpeg","Manufacturing - 6"]
 ],
